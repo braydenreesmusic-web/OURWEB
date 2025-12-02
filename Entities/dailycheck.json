@@ -1,0 +1,53 @@
+{
+  "name": "DailyCheckIn",
+  "type": "object",
+  "properties": {
+    "user_name": {
+      "type": "string",
+      "description": "User's name"
+    },
+    "emotion": {
+      "type": "string",
+      "enum": [
+        "happy",
+        "excited",
+        "calm",
+        "stressed",
+        "tired",
+        "loved",
+        "lonely",
+        "energized"
+      ],
+      "description": "Current emotion"
+    },
+    "energy_level": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Energy level 1-10"
+    },
+    "love_language": {
+      "type": "string",
+      "enum": [
+        "words_of_affirmation",
+        "quality_time",
+        "physical_touch",
+        "acts_of_service",
+        "receiving_gifts"
+      ],
+      "description": "Love language needed today"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Check-in date"
+    }
+  },
+  "required": [
+    "user_name",
+    "emotion",
+    "energy_level",
+    "love_language",
+    "date"
+  ]
+}

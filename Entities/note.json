@@ -1,0 +1,22 @@
+{
+  "name": "Note",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string",
+      "description": "Note content"
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Name of the person who wrote the note"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this note is marked as favorite"
+    }
+  },
+  "required": [
+    "content"
+  ]
+}

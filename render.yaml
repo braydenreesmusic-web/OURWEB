@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: webbb-frontend
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: dist
+    routes:
+      - path: /
+        destination: /index.html
+    envVars:
+      - key: NEXT_PUBLIC_FIREBASE_API_KEY
+        scope: build
+      - key: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+        scope: build
+      - key: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+        scope: build
+      - key: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+        scope: build
+      - key: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+        scope: build
+      - key: NEXT_PUBLIC_FIREBASE_APP_ID
+        scope: build
+      - key: NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+        scope: build
+      - key: NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+        scope: build
+      - key: NEXT_PUBLIC_LLM_ENDPOINT
+        scope: build
+      - key: NEXT_PUBLIC_UPLOAD_ENDPOINT
+        scope: build
+
+  - type: web
+    name: webbb-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: PORT
+        value: "8787"
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        scope: secret
+      - key: CLOUDINARY_API_KEY
+        scope: secret
+      - key: CLOUDINARY_API_SECRET
+        scope: secret
+      - key: CLOUDINARY_CLOUD_NAME
+        scope: secret

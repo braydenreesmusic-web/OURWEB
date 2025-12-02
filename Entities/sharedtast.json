@@ -1,0 +1,37 @@
+{
+  "name": "SharedTask",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Task title"
+    },
+    "list_type": {
+      "type": "string",
+      "enum": [
+        "groceries",
+        "chores",
+        "movies",
+        "general"
+      ],
+      "default": "general",
+      "description": "Type of list"
+    },
+    "is_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "added_by": {
+      "type": "string",
+      "description": "Who added the task"
+    },
+    "completed_by": {
+      "type": "string",
+      "description": "Who completed the task"
+    }
+  },
+  "required": [
+    "title",
+    "list_type"
+  ]
+}

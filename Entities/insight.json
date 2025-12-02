@@ -1,0 +1,43 @@
+{
+  "name": "RelationshipInsight",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "weekly_summary",
+        "communication_tip",
+        "date_suggestion",
+        "milestone",
+        "pattern"
+      ],
+      "description": "Type of insight"
+    },
+    "title": {
+      "type": "string",
+      "description": "Insight title"
+    },
+    "content": {
+      "type": "string",
+      "description": "Insight content"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "type",
+    "title",
+    "content"
+  ]
+}

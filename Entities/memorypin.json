@@ -1,0 +1,41 @@
+{
+  "name": "MemoryPin",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Memory title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Memory description"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "Latitude coordinate"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Longitude coordinate"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Associated photo URL"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the memory"
+    },
+    "color": {
+      "type": "string",
+      "default": "#FF6B9D",
+      "description": "Pin color"
+    }
+  },
+  "required": [
+    "title",
+    "latitude",
+    "longitude"
+  ]
+}

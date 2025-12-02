@@ -1,0 +1,168 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXFileReference section */
+		10FC3D1F2EDBE09900331DF0 /* layout.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = layout.js; sourceTree = "<group>"; };
+		10FC3D202EDBE0BC00331DF0 /* schedule.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = schedule.js; sourceTree = "<group>"; };
+		10FC3D222EDF825E00331DF0 /* dashboard.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = dashboard.js; sourceTree = "<group>"; };
+		10FC3D232EDF829C00331DF0 /* media.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = media.js; sourceTree = "<group>"; };
+		10FC3D242EDF82AB00331DF0 /* map.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = map.js; sourceTree = "<group>"; };
+		10FC3D252EDF82BC00331DF0 /* profile.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = profile.js; sourceTree = "<group>"; };
+		10FC3D262EDF82CF00331DF0 /* bookmarks.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bookmarks.js; sourceTree = "<group>"; };
+		10FC3D292EDF832500331DF0 /* dayscounter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = dayscounter.js; sourceTree = "<group>"; };
+		10FC3D2A2EDF833600331DF0 /* presence.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = presence.js; sourceTree = "<group>"; };
+		10FC3D2B2EDF834A00331DF0 /* savingsgoal.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = savingsgoal.js; sourceTree = "<group>"; };
+		10FC3D2C2EDF836200331DF0 /* memory.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = memory.js; sourceTree = "<group>"; };
+		10FC3D2D2EDF837100331DF0 /* dailycheckin.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = dailycheckin.js; sourceTree = "<group>"; };
+		10FC3D2E2EDF837F00331DF0 /* insight.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = insight.js; sourceTree = "<group>"; };
+		10FC3D2F2EDF839100331DF0 /* enhancedchat.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = enhancedchat.js; sourceTree = "<group>"; };
+		10FC3D372EDF844600331DF0 /* relashonshipdata.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = relashonshipdata.js; sourceTree = "<group>"; };
+		10FC3D382EDF845A00331DF0 /* note.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = note.js; sourceTree = "<group>"; };
+		10FC3D392EDF846700331DF0 /* photo.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = photo.js; sourceTree = "<group>"; };
+		10FC3D3A2EDF847400331DF0 /* video.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = video.js; sourceTree = "<group>"; };
+		10FC3D3B2EDF848000331DF0 /* music.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = music.js; sourceTree = "<group>"; };
+		10FC3D3C2EDF848A00331DF0 /* event.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = event.js; sourceTree = "<group>"; };
+		10FC3D3F2EDF84B000331DF0 /* location.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = location.js; sourceTree = "<group>"; };
+		10FC3D402EDF84E700331DF0 /* user.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = user.js; sourceTree = "<group>"; };
+		10FC3D412EDF84FC00331DF0 /* dailycheck.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = dailycheck.js; sourceTree = "<group>"; };
+		10FC3D422EDF851D00331DF0 /* playlist.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = playlist.js; sourceTree = "<group>"; };
+		10FC3D432EDF852E00331DF0 /* memorypin.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = memorypin.js; sourceTree = "<group>"; };
+		10FC3D442EDF853F00331DF0 /* insight.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = insight.js; sourceTree = "<group>"; };
+		10FC3D452EDF854C00331DF0 /* bookmark.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = bookmark.js; sourceTree = "<group>"; };
+		10FC3D462EDF855800331DF0 /* listeningsesion.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = listeningsesion.js; sourceTree = "<group>"; };
+		10FC3D472EDF857400331DF0 /* sharedtast.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = sharedtast.js; sourceTree = "<group>"; };
+		10FC3D482EDF858300331DF0 /* dateidea.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = dateidea.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		10FC3D322EDF83CB00331DF0 /* media */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = media;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXGroup section */
+		10FC3D182EDBE07300331DF0 = {
+			isa = PBXGroup;
+			children = (
+				10FC3D1F2EDBE09900331DF0 /* layout.js */,
+				10FC3D272EDF82EA00331DF0 /* Pages */,
+				10FC3D312EDF83B700331DF0 /* Components */,
+				10FC3D492EDF858E00331DF0 /* Entities */,
+			);
+			sourceTree = "<group>";
+		};
+		10FC3D272EDF82EA00331DF0 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				10FC3D202EDBE0BC00331DF0 /* schedule.js */,
+				10FC3D232EDF829C00331DF0 /* media.js */,
+				10FC3D242EDF82AB00331DF0 /* map.js */,
+				10FC3D252EDF82BC00331DF0 /* profile.js */,
+				10FC3D262EDF82CF00331DF0 /* bookmarks.js */,
+				10FC3D222EDF825E00331DF0 /* dashboard.js */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		10FC3D312EDF83B700331DF0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				10FC3D322EDF83CB00331DF0 /* media */,
+				10FC3D292EDF832500331DF0 /* dayscounter.js */,
+				10FC3D2A2EDF833600331DF0 /* presence.js */,
+				10FC3D2B2EDF834A00331DF0 /* savingsgoal.js */,
+				10FC3D2C2EDF836200331DF0 /* memory.js */,
+				10FC3D2D2EDF837100331DF0 /* dailycheckin.js */,
+				10FC3D2E2EDF837F00331DF0 /* insight.js */,
+				10FC3D2F2EDF839100331DF0 /* enhancedchat.js */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		10FC3D492EDF858E00331DF0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				10FC3D372EDF844600331DF0 /* relashonshipdata.js */,
+				10FC3D382EDF845A00331DF0 /* note.js */,
+				10FC3D392EDF846700331DF0 /* photo.js */,
+				10FC3D3A2EDF847400331DF0 /* video.js */,
+				10FC3D3B2EDF848000331DF0 /* music.js */,
+				10FC3D3C2EDF848A00331DF0 /* event.js */,
+				10FC3D3F2EDF84B000331DF0 /* location.js */,
+				10FC3D402EDF84E700331DF0 /* user.js */,
+				10FC3D412EDF84FC00331DF0 /* dailycheck.js */,
+				10FC3D422EDF851D00331DF0 /* playlist.js */,
+				10FC3D432EDF852E00331DF0 /* memorypin.js */,
+				10FC3D442EDF853F00331DF0 /* insight.js */,
+				10FC3D452EDF854C00331DF0 /* bookmark.js */,
+				10FC3D462EDF855800331DF0 /* listeningsesion.js */,
+				10FC3D472EDF857400331DF0 /* sharedtast.js */,
+				10FC3D482EDF858300331DF0 /* dateidea.js */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		10FC3D192EDBE07300331DF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1640;
+			};
+			buildConfigurationList = 10FC3D1C2EDBE07300331DF0 /* Build configuration list for PBXProject "webbb" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10FC3D182EDBE07300331DF0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		10FC3D1D2EDBE07300331DF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6T649J82JV;
+			};
+			name = Debug;
+		};
+		10FC3D1E2EDBE07300331DF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6T649J82JV;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10FC3D1C2EDBE07300331DF0 /* Build configuration list for PBXProject "webbb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10FC3D1D2EDBE07300331DF0 /* Debug */,
+				10FC3D1E2EDBE07300331DF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10FC3D192EDBE07300331DF0 /* Project object */;
+}

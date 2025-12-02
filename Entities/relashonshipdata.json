@@ -1,0 +1,40 @@
+{
+  "name": "RelationshipData",
+  "type": "object",
+  "properties": {
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the relationship started"
+    },
+    "partner1_name": {
+      "type": "string",
+      "description": "First partner's name"
+    },
+    "partner2_name": {
+      "type": "string",
+      "description": "Second partner's name"
+    },
+    "partner1_avatar": {
+      "type": "string",
+      "description": "First partner's avatar URL"
+    },
+    "partner2_avatar": {
+      "type": "string",
+      "description": "Second partner's avatar URL"
+    },
+    "savings_goal": {
+      "type": "number",
+      "default": 10000,
+      "description": "Target savings amount"
+    },
+    "current_savings": {
+      "type": "number",
+      "default": 0,
+      "description": "Current savings amount"
+    }
+  },
+  "required": [
+    "start_date"
+  ]
+}

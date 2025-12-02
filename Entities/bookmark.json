@@ -1,0 +1,50 @@
+//
+//  bookmark.js
+//  webbb
+//
+//  Created by Brayden Rees on 12/2/25.
+//
+
+
+{
+  "name": "Bookmark",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Bookmark title"
+    },
+    "url": {
+      "type": "string",
+      "description": "Link URL"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "restaurant",
+        "movie",
+        "tiktok",
+        "date_idea",
+        "youtube",
+        "other"
+      ],
+      "description": "Bookmark category"
+    },
+    "thumbnail": {
+      "type": "string",
+      "description": "Thumbnail image URL"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes"
+    },
+    "added_by": {
+      "type": "string",
+      "description": "Who added this bookmark"
+    }
+  },
+  "required": [
+    "title",
+    "category"
+  ]
+}

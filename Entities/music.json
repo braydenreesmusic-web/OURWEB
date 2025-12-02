@@ -1,0 +1,49 @@
+{
+  "name": "Music",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Song title"
+    },
+    "artist": {
+      "type": "string",
+      "description": "Artist name"
+    },
+    "album": {
+      "type": "string",
+      "description": "Album name"
+    },
+    "cover_art": {
+      "type": "string",
+      "description": "Album cover URL"
+    },
+    "preview_url": {
+      "type": "string",
+      "description": "30 second preview URL from iTunes"
+    },
+    "itunes_url": {
+      "type": "string",
+      "description": "iTunes/Apple Music link"
+    },
+    "spotify_search_url": {
+      "type": "string",
+      "description": "Spotify search URL"
+    },
+    "added_by": {
+      "type": "string",
+      "description": "Who added this song"
+    },
+    "is_favorite": {
+      "type": "boolean",
+      "default": false
+    },
+    "playlist_id": {
+      "type": "string",
+      "description": "ID of the playlist this song belongs to"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

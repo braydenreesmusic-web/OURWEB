@@ -1,0 +1,27 @@
+{
+  "name": "DateIdea",
+  "type": "object",
+  "properties": {
+    "idea": {
+      "type": "string",
+      "description": "The date idea"
+    },
+    "added_by": {
+      "type": "string",
+      "description": "Who added the idea"
+    },
+    "is_used": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this idea has been used"
+    },
+    "used_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the idea was used"
+    }
+  },
+  "required": [
+    "idea"
+  ]
+}

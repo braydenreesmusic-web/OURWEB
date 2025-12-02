@@ -1,0 +1,21 @@
+{
+  "name": "Playlist",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Playlist name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Playlist description"
+    },
+    "cover_image": {
+      "type": "string",
+      "description": "Playlist cover image URL"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

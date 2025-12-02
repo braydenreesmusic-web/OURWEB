@@ -1,0 +1,25 @@
+{
+  "name": "Video",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Video URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Video thumbnail"
+    },
+    "title": {
+      "type": "string",
+      "description": "Video title"
+    },
+    "uploaded_by": {
+      "type": "string",
+      "description": "Name of uploader"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

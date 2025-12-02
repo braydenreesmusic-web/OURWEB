@@ -1,0 +1,32 @@
+{
+  "name": "UserPresence",
+  "type": "object",
+  "properties": {
+    "user_name": {
+      "type": "string",
+      "description": "User's display name"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "online",
+        "away",
+        "offline"
+      ],
+      "default": "offline",
+      "description": "Current presence status"
+    },
+    "last_seen": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last activity timestamp"
+    },
+    "custom_status": {
+      "type": "string",
+      "description": "Custom status message"
+    }
+  },
+  "required": [
+    "user_name"
+  ]
+}

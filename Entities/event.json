@@ -1,0 +1,60 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Event title"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Event date"
+    },
+    "time": {
+      "type": "string",
+      "description": "Event time"
+    },
+    "location": {
+      "type": "string",
+      "description": "Event location"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes"
+    },
+    "link": {
+      "type": "string",
+      "description": "Link to reservation, tickets, etc"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "anniversary",
+        "together",
+        "brayden_work",
+        "youna_work",
+        "other"
+      ],
+      "default": "other",
+      "description": "Event category for color coding"
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether event repeats monthly"
+    },
+    "memory_photo": {
+      "type": "string",
+      "description": "Photo URL for memory after event"
+    },
+    "memory_note": {
+      "type": "string",
+      "description": "Memory note after event"
+    }
+  },
+  "required": [
+    "title",
+    "date"
+  ]
+}

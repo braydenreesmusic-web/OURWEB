@@ -1,0 +1,46 @@
+{
+  "name": "ListeningSession",
+  "type": "object",
+  "properties": {
+    "song_id": {
+      "type": "string",
+      "description": "ID of the song being played"
+    },
+    "song_title": {
+      "type": "string",
+      "description": "Song title"
+    },
+    "song_artist": {
+      "type": "string",
+      "description": "Artist name"
+    },
+    "preview_url": {
+      "type": "string",
+      "description": "Preview URL"
+    },
+    "cover_art": {
+      "type": "string",
+      "description": "Cover art URL"
+    },
+    "is_playing": {
+      "type": "boolean",
+      "default": false
+    },
+    "current_time": {
+      "type": "number",
+      "default": 0,
+      "description": "Current playback position in seconds"
+    },
+    "started_by": {
+      "type": "string",
+      "description": "Who started the session"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "song_title"
+  ]
+}
