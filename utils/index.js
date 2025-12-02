@@ -16,3 +16,7 @@ export const formatCurrency = (amount) => {
     currency: 'USD',
   }).format(amount);
 };
+
+export const createPageUrl = (page) => {
+  return `/${page}`;
+};
