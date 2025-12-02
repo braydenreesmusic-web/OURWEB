@@ -28,9 +28,20 @@ export default function Dashboard() {
   const [showConstellation, setShowConstellation] = useState(false);
   const [showInsights, setShowInsights] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    base44.auth.me().then(setUser).catch(() => {});
+    const fetchUser = async () => {
+      try {
+        const u = await base44.auth.me();
+        setUser(u);
+      } catch (err) {
+        console.error('Auth error:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
   }, []);
 
   // Update presence every 30 seconds
