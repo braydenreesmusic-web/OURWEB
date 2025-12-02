@@ -15,11 +15,3 @@ services:
         value: "3000"
       - key: NODE_ENV
         value: production
-      - key: OPENAI_API_KEY
-        scope: secret
-      - key: CLOUDINARY_API_KEY
-        scope: secret
-      - key: CLOUDINARY_API_SECRET
-        scope: secret
-      - key: CLOUDINARY_CLOUD_NAME
-        scope: secret
