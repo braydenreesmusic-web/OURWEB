@@ -78,8 +78,15 @@ export default function Dashboard() {
   const { data: relationshipData } = useQuery({
     queryKey: ['relationship'],
     queryFn: async () => {
-      const data = await base44.entities.RelationshipData.list();
-      return data[0] || null;
+      try {
+        const listFn = base44?.entities?.RelationshipData?.list;
+        if (typeof listFn !== 'function') return null;
+        const data = await listFn();
+        return data?.[0] || null;
+      } catch (err) {
+        console.error('RelationshipData fetch error:', err);
+        return null;
+      }
     }
   });
 
