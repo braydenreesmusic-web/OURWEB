@@ -1,18 +1,4 @@
-import {
-  db,
-  collection as fbCollection,
-  query as fbQuery,
-  orderBy as fbOrderBy,
-  limit as fbLimit,
-  getDocs,
-  addDoc,
-  doc as fbDoc,
-  updateDoc,
-  deleteDoc,
-  serverTimestamp,
-  getCurrentUser,
-  auth as firebaseAuth
-} from './firebase';
+import * as Firebase from './firebase';
 import { signOut } from 'firebase/auth';
 
 // Minimal compatibility shim for the original `base44` client surface.
@@ -20,23 +6,22 @@ import { signOut } from 'firebase/auth';
 // and base44.integrations.Core.UploadFile / InvokeLLM.
 
 function makeEntity(name) {
-  const colRef = (dbRef) => fbCollection(db, name);
+  const colRef = (dbRef) => Firebase.collection(Firebase.db, name);
 
   async function list(order = undefined, take = undefined) {
     try {
-      let q = fbCollection(db, name);
+      let q = Firebase.collection(Firebase.db, name);
       const clauses = [];
       if (order) {
-        // e.g. '-created_date' for desc
         const desc = order.startsWith('-');
         const field = desc ? order.slice(1) : order;
-        clauses.push(fbOrderBy(field, desc ? 'desc' : 'asc'));
+        clauses.push(Firebase.orderBy(field, desc ? 'desc' : 'asc'));
       }
       if (take) {
-        clauses.push(fbLimit(take));
+        clauses.push(Firebase.limit(take));
       }
-      if (clauses.length) q = fbQuery(fbCollection(db, name), ...clauses);
-      const snap = await getDocs(q);
+      if (clauses.length) q = Firebase.query(Firebase.collection(Firebase.db, name), ...clauses);
+      const snap = await Firebase.getDocs(q);
       const items = [];
       snap.forEach(d => items.push({ id: d.id, ...d.data() }));
       return items;
@@ -48,8 +33,8 @@ function makeEntity(name) {
 
   async function create(data = {}) {
     try {
-      const payload = { ...data, created_date: serverTimestamp() };
-      const ref = await addDoc(fbCollection(db, name), payload);
+      const payload = { ...data, created_date: Firebase.serverTimestamp() };
+      const ref = await Firebase.addDoc(Firebase.collection(Firebase.db, name), payload);
       return { id: ref.id, ...data };
     } catch (err) {
       console.error(`Error creating ${name}:`, err);
@@ -59,8 +44,8 @@ function makeEntity(name) {
 
   async function update(id, data = {}) {
     try {
-      const dRef = fbDoc(db, name, id);
-      await updateDoc(dRef, { ...data, updated_date: serverTimestamp() });
+      const dRef = Firebase.doc(Firebase.db, name, id);
+      await Firebase.updateDoc(dRef, { ...data, updated_date: Firebase.serverTimestamp() });
       return { id, ...data };
     } catch (err) {
       console.error(`Error updating ${name}/${id}:`, err);
@@ -70,8 +55,8 @@ function makeEntity(name) {
 
   async function remove(id) {
     try {
-      const dRef = fbDoc(db, name, id);
-      await deleteDoc(dRef);
+      const dRef = Firebase.doc(Firebase.db, name, id);
+      await Firebase.deleteDoc(dRef);
       return { id };
     } catch (err) {
       console.error(`Error deleting ${name}/${id}:`, err);
@@ -111,7 +96,7 @@ const entitiesProxy = new Proxy(entities, {
 
 async function me() {
   try {
-    const u = await getCurrentUser();
+    const u = await Firebase.getCurrentUser();
     return u;
   } catch (err) {
     console.error('auth.me error:', err);
@@ -121,7 +106,7 @@ async function me() {
 
 async function logout() {
   try {
-    await signOut(firebaseAuth);
+    await signOut(Firebase.auth);
   } catch (err) {
     console.error('logout error:', err);
   }
