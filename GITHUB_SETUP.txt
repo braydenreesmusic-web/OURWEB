@@ -1,0 +1,37 @@
+FOLLOW THESE STEPS TO DEPLOY:
+
+1. CREATE GITHUB ACCOUNT (if you don't have one):
+   - Go to github.com
+   - Click "Sign up"
+   - Use your email
+
+2. CREATE NEW REPOSITORY:
+   - After signing in, click "+"
+   - Select "New repository"
+   - Name it: webbb
+   - Click "Create repository"
+   - DO NOT initialize with README (we already have code)
+
+3. COPY THE COMMANDS FROM GITHUB:
+   - You'll see setup instructions
+   - Copy the HTTPS URL shown (like https://github.com/YOUR_USERNAME/webbb.git)
+
+4. IN THIS TERMINAL, RUN:
+   cd /Users/braydenrees/Desktop/webbb
+   git remote set-url origin https://github.com/YOUR_USERNAME/webbb.git
+   git push -u origin main
+
+   (Replace YOUR_USERNAME with your actual GitHub username)
+
+5. ENTER YOUR CREDENTIALS:
+   - GitHub will ask for username/password
+   - Use your GitHub username
+   - For password, use a Personal Access Token (not your password):
+     * Go to github.com/settings/tokens
+     * Click "Generate new token"
+     * Select "repo" scope
+     * Copy the token and paste it as password
+
+DONE! Your code is now on GitHub.
+
+NEXT: Go to render.com and deploy from there.

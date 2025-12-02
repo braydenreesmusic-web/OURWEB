@@ -4,12 +4,14 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, serverTimestamp, collection, query, orderBy as fbOrderBy, limit as fbLimit, getDocs, addDoc, doc, updateDoc, deleteDoc, where as fbWhere } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '',
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '',
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || '',
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || ''
+  apiKey: "AIzaSyCg4ff72caOr1rk9y7kZAkUbcyjqfPuMLI",
+  authDomain: "ourwebsite223.firebaseapp.com",
+  databaseURL: "https://ourwebsite223-default-rtdb.firebaseio.com",
+  projectId: "ourwebsite223",
+  storageBucket: "ourwebsite223.firebasestorage.app",
+  messagingSenderId: "978864749848",
+  appId: "1:978864749848:web:f1e635f87e2ddcc007f26d",
+  measurementId: "G-823MYFCCMG"
 };
 
 if (!getApps().length) initializeApp(firebaseConfig);
@@ -35,12 +37,14 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, serverTimestamp, collection, query, orderBy as fbOrderBy, limit as fbLimit, getDocs, addDoc, doc, updateDoc, deleteDoc, where as fbWhere } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '',
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '',
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || '',
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || ''
+  apiKey: "AIzaSyCg4ff72caOr1rk9y7kZAkUbcyjqfPuMLI",
+  authDomain: "ourwebsite223.firebaseapp.com",
+  databaseURL: "https://ourwebsite223-default-rtdb.firebaseio.com",
+  projectId: "ourwebsite223",
+  storageBucket: "ourwebsite223.firebasestorage.app",
+  messagingSenderId: "978864749848",
+  appId: "1:978864749848:web:f1e635f87e2ddcc007f26d",
+  measurementId: "G-823MYFCCMG"
 };
 
 if (!getApps().length) initializeApp(firebaseConfig);

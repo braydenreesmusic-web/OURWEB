@@ -9,10 +9,10 @@
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageCircle, Image, Video, Music } from 'lucide-react';
-import NotesTab from '../components/media/NotesTab';
-import PhotosTab from '../components/media/PhotosTab';
-import VideosTab from '../components/media/VideosTab';
-import MusicTab from '../components/media/MusicTab';
+import NotesTab from '../Components/media/notestab';
+import PhotosTab from '../Components/media/photostab';
+import VideosTab from '../Components/media/videotab';
+import MusicTab from '../Components/media/musictab';
 
 export default function Media() {
   return (
