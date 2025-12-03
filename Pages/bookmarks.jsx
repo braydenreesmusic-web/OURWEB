@@ -171,6 +171,7 @@ export default function Bookmarks() {
                       href={bookmark.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Open ${bookmark.title}`}
                       className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 smooth-transition"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -180,6 +181,7 @@ export default function Bookmarks() {
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteMutation.mutate(bookmark.id)}
+                    aria-label={`Delete ${bookmark.title}`}
                     className="w-11 h-11 rounded-xl text-red-500 hover:bg-red-50"
                   >
                     <Trash2 className="w-4 h-4" />
