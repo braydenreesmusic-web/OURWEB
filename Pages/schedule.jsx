@@ -169,18 +169,19 @@ export default function Schedule() {
   const selectedDateEvents = getEventsForDate(selectedDate);
 
   return (
-    <div className="max-w-2xl mx-auto p-4 space-y-4 pb-24">
-      <div className="flex items-center justify-between pt-4">
-        <h1 className="text-3xl font-bold gradient-text">Schedule</h1>
-        <div className="flex gap-2">
-          <Button onClick={() => setShowDateJar(true)} variant="outline" className="rounded-full h-10 px-4 border-pink-200 text-pink-500">
-            <Shuffle className="w-4 h-4 mr-1" /> Date Jar
-          </Button>
-          <Button onClick={() => { resetForm(); setShowForm(true); }} className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full h-10 px-4">
-            <Plus className="w-4 h-4" />
-          </Button>
+    <div className="min-h-screen flex justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+      <div className="w-full max-w-4xl px-4 pb-24 space-y-4" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 6rem)' }}>
+        <div className="flex items-center justify-between pt-4">
+          <h1 className="text-3xl font-bold gradient-text">Schedule</h1>
+          <div className="flex gap-2">
+            <Button onClick={() => setShowDateJar(true)} variant="outline" className="rounded-full h-10 px-4 border-pink-200 text-pink-500">
+              <Shuffle className="w-4 h-4 mr-1" /> Date Jar
+            </Button>
+            <Button onClick={() => { resetForm(); setShowForm(true); }} className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full h-10 px-4">
+              <Plus className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
-      </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid grid-cols-2 bg-gray-100 rounded-xl p-1">
@@ -382,6 +383,7 @@ export default function Schedule() {
           </div>
         </DialogContent>
       </Dialog>
+      </div>
     </div>
   );
 }
