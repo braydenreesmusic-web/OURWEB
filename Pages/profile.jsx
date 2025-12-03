@@ -11,7 +11,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { User, Heart, Image, Music, Calendar, LogOut, Save, Edit2, Settings } from 'lucide-react';
-import AppShell from '../components/AppShell';
+import AppShell from '../Components/AppShell';
 
 export default function Profile() {
   const queryClient = useQueryClient();
