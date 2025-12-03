@@ -16,8 +16,10 @@ export default function SavingsGoal({ current, goal, onUpdate }) {
   const [showDialog, setShowDialog] = useState(false);
   const [amount, setAmount] = useState('');
   
-  const percentage = Math.min((current / goal) * 100, 100);
-  const remaining = goal - current;
+  const safeCurrent = typeof current === 'number' && isFinite(current) ? current : 0;
+  const safeGoal = typeof goal === 'number' && isFinite(goal) && goal > 0 ? goal : 0;
+  const percentage = safeGoal > 0 ? Math.min((safeCurrent / safeGoal) * 100, 100) : 0;
+  const remaining = Math.max(safeGoal - safeCurrent, 0);
 
   const handleAdd = () => {
     const newAmount = current + parseFloat(amount || 0);
@@ -38,7 +40,7 @@ export default function SavingsGoal({ current, goal, onUpdate }) {
             </div>
             <div>
               <h3 className="text-gray-800 font-bold">Savings Goal</h3>
-              <p className="text-gray-400 text-sm">${remaining.toLocaleString()} to go</p>
+              <p className="text-gray-400 text-sm">${Number(remaining).toLocaleString()} to go</p>
             </div>
           </div>
           <Button
@@ -62,8 +64,8 @@ export default function SavingsGoal({ current, goal, onUpdate }) {
             />
           </div>
           <div className="flex justify-between">
-            <span className="text-emerald-600 font-bold">${current.toLocaleString()}</span>
-            <span className="text-gray-400">${goal.toLocaleString()}</span>
+            <span className="text-emerald-600 font-bold">${Number(safeCurrent).toLocaleString()}</span>
+            <span className="text-gray-400">${Number(safeGoal).toLocaleString()}</span>
           </div>
         </div>
       </div>
