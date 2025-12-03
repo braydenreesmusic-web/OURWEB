@@ -24,7 +24,7 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    base44.auth.me().then(setUser).catch(() => {});
+    base44.auth.me().then(u => { console.log('[Profile] auth.me()', u); setUser(u); }).catch((e) => { console.error('[Profile] auth.me error', e); });
   }, []);
 
   const { data: relationshipData } = useQuery({
@@ -34,6 +34,7 @@ export default function Profile() {
         const listFn = base44?.entities?.RelationshipData?.list;
         if (typeof listFn !== 'function') return null;
         const data = await listFn();
+        console.log('[Profile] RelationshipData.list()', data);
         return data?.[0] || null;
       } catch (err) {
         console.error('RelationshipData fetch error:', err);

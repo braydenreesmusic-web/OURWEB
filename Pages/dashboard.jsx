@@ -34,6 +34,7 @@ export default function Dashboard() {
     const fetchUser = async () => {
       try {
         const u = await base44.auth.me();
+        console.log('[Dashboard] auth.me()', u);
         setUser(u);
       } catch (err) {
         console.error('Auth error:', err);
@@ -82,6 +83,7 @@ export default function Dashboard() {
         const listFn = base44?.entities?.RelationshipData?.list;
         if (typeof listFn !== 'function') return null;
         const data = await listFn();
+        console.log('[Dashboard] RelationshipData.list()', data);
         return data?.[0] || null;
       } catch (err) {
         console.error('RelationshipData fetch error:', err);
@@ -169,10 +171,18 @@ export default function Dashboard() {
 
   if (!relationshipData) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin text-pink-500 mx-auto mb-4" />
-          <p className="text-gray-500">Loading your love story...</p>
+      <div className="flex items-center justify-center min-h-screen p-6">
+        <div className="text-center space-y-4 max-w-sm">
+          <Loader2 className="w-8 h-8 animate-spin text-pink-500 mx-auto" />
+          <div>
+            <p className="text-gray-700 font-semibold">No relationship data yet</p>
+            <p className="text-gray-500 text-sm">Create your anniversary and partner info to get started.</p>
+          </div>
+          <Link to={createPageUrl('Profile')}>
+            <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl">
+              Go to Profile
+            </Button>
+          </Link>
         </div>
       </div>
     );

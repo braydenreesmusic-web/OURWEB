@@ -259,7 +259,7 @@ export default function Map() {
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <p className="font-semibold text-gray-800 text-sm">{loc.user_name}</p>
                 </div>
-                <p className="text-gray-400 text-xs mt-1">{new Date(loc.last_updated).toLocaleTimeString()}</p>
+                <p className="text-gray-400 text-xs mt-1">{loc.last_updated ? new Date(loc.last_updated).toLocaleTimeString() : ''}</p>
               </button>
             ))}
           </div>
@@ -316,7 +316,7 @@ export default function Map() {
               <Popup>
                 <div className="text-center">
                   <p className="font-semibold text-gray-800">{loc.user_name}</p>
-                  <p className="text-xs text-gray-500">{new Date(loc.last_updated).toLocaleString()}</p>
+                  <p className="text-xs text-gray-500">{loc.last_updated ? new Date(loc.last_updated).toLocaleString() : ''}</p>
                 </div>
               </Popup>
             </Marker>

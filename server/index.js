@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 8787;
 app.post('/api/llm', async (req, res) => {
   try {
     const { prompt } = req.body;
-    const OPENAI_KEY = process.env.OPENAI_API_KEY;
+    const OPENAI_KEY = process.env.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;
     if (!OPENAI_KEY) {
       // Return a safe mock if key not configured
       return res.json({ mock: true, result: `MOCK RESPONSE for prompt: ${prompt?.slice(0, 200)}` });
@@ -44,7 +44,7 @@ app.post('/api/llm', async (req, res) => {
 app.post('/api/upload', upload.single('file'), async (req, res) => {
   try {
     const file = req.file;
-    const { CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, CLOUDINARY_CLOUD_NAME } = process.env;
+    const { 173213128135825, nFLwOht7Jk2QlbDLOMZ76NAP6Ec, dgip2lmxu } = process.env;
     if (!CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET || !CLOUDINARY_CLOUD_NAME) {
       return res.status(500).json({ error: 'Cloudinary not configured on server' });
     }
