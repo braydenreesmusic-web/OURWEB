@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
-import AppShell from '../components/AppShell';
+import AppShell from '../Components/AppShell';
 
 export default function Dashboard() {
   const queryClient = useQueryClient();
