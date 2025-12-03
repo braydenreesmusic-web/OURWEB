@@ -13,7 +13,7 @@ import NotesTab from '../Components/media/notestab';
 import PhotosTab from '../Components/media/photostab';
 import VideosTab from '../Components/media/videotab';
 import MusicTab from '../Components/media/musictab';
-import AppShell from '../components/AppShell';
+import AppShell from '../Components/AppShell';
 
 export default function Media() {
   // Optionally, you can use React Query for each tab's data and loading/error states
