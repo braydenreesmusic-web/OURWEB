@@ -205,6 +205,7 @@ export default function Profile() {
               <Button
                 onClick={() => saveMutation.mutate(formData)}
                 className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl"
+                loading={saveMutation.isPending}
               >
                 <Save className="w-4 h-4 mr-2" /> Save
               </Button>

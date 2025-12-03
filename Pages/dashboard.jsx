@@ -194,7 +194,7 @@ export default function Dashboard() {
   ) || [];
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 space-y-6">
+    <div className="container mx-auto max-w-2xl px-4 space-y-6 pb-24">
       {showCheckIn && <DailyCheckIn user={user} onClose={() => setShowCheckIn(false)} />}
       {showConstellation && allMemories && (
         <MemoryConstellation memories={allMemories} onClose={() => setShowConstellation(false)} />
