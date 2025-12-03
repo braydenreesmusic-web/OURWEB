@@ -24,8 +24,8 @@ export default function SignIn() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-white/80 backdrop-blur border border-white/40 rounded-2xl shadow-xl p-6">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-white to-pink-50">
+      <div className="w-full max-w-sm bg-white/90 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-xl p-6">
         <h1 className="text-2xl font-semibold tracking-tight mb-2">Welcome back</h1>
         <p className="text-sm text-gray-600 mb-4">Sign in to continue</p>
         {error && <div className="text-sm text-red-600 mb-3">{error}</div>}

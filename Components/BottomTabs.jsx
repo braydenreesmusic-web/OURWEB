@@ -12,7 +12,7 @@ const tabs = [
 
 export default function BottomTabs() {
   return (
-    <nav className="fixed bottom-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-md bg-white/80 backdrop-blur border border-white/40 rounded-2xl shadow-lg">
+    <nav className="fixed bottom-[env(safe-area-inset-bottom,0)+12px] left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-md bg-white/85 backdrop-blur-xl border border-white/40 rounded-2xl shadow-lg">
       <ul className="flex items-center justify-between px-3 py-2">
         {tabs.map(({ to, label, icon: Icon }) => (
           <li key={to}>

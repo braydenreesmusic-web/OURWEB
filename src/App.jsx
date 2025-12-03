@@ -23,7 +23,7 @@ function AppShell() {
   const location = useLocation();
   const hideTabs = location.pathname === '/signin';
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-[calc(env(safe-area-inset-bottom,0)+84px)] bg-white">
       <Routes>
         <Route path="/signin" element={<SignIn />} />
         <Route
