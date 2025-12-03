@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 8787;
 app.post('/api/llm', async (req, res) => {
   try {
     const { prompt } = req.body;
-    const OPENAI_KEY = process.env.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;
+    const OPENAI_KEY = process.env.OPENAI_KEY;
     if (!OPENAI_KEY) {
       // Return a safe mock if key not configured
       return res.json({ mock: true, result: `MOCK RESPONSE for prompt: ${prompt?.slice(0, 200)}` });
