@@ -17,7 +17,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { format } from 'date-fns';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import AppShell from '../components/AppShell';
+import AppShell from '../Components/AppShell';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
