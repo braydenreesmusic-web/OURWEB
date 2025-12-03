@@ -63,9 +63,9 @@ export default function Profile() {
         base44.entities.Music.list(),
         base44.entities.Event.list()
       ]);
-      return {
-        notes: notes.length,
-        photos: photos.length,
+      return (
+        <div className="container mx-auto max-w-2xl px-4 pb-24 space-y-6">
+          <div className="pt-2">
         music: music.length,
         events: events.length
       };

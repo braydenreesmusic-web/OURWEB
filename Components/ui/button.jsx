@@ -16,7 +16,7 @@ const variants = {
 export function Button({ children, className = '', variant = 'default', size = 'default', ...props }) {
   const cls = [base, sizes[size] || sizes.default, variants[variant] || variants.default, className].join(' ').trim();
   return (
-    <button className={cls} {...props}>
+    <button className={`${cls} active:scale-[0.99]`} {...props}>
       {children}
     </button>
   );
