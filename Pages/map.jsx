@@ -17,6 +17,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { format } from 'date-fns';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import AppShell from '../components/AppShell';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -173,101 +174,111 @@ export default function Map() {
     : [40.7128, -74.0060];
 
   return (
-    <div className="h-screen flex flex-col pb-24">
-      {/* Header */}
-      <div className="px-4 pt-3 pb-2 space-y-3 bg-gradient-to-b from-white to-transparent">
-        <h1 className="text-3xl font-bold gradient-text pt-2">Our Map</h1>
-        
-        <div className="flex gap-2">
-          <Button
-            variant={activeTab === 'memories' ? 'default' : 'outline'}
-            onClick={() => setActiveTab('memories')}
-            className={`flex-1 rounded-xl h-10 ${
-              activeTab === 'memories' 
-                ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white' 
-                : 'border-gray-200'
-            }`}
-          >
-            <Heart className="w-4 h-4 mr-2" />
-            Memories
-          </Button>
-          <Button
-            variant={activeTab === 'live' ? 'default' : 'outline'}
-            onClick={() => setActiveTab('live')}
-            className={`flex-1 rounded-xl h-10 ${
-              activeTab === 'live' 
-                ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white' 
-                : 'border-gray-200'
-            }`}
-          >
-            <Navigation className="w-4 h-4 mr-2" />
-            Live
-          </Button>
-        </div>
-
-        {activeTab === 'live' && (
-          <Button
-            onClick={handleShareLocation}
-            disabled={sharing}
-            className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl h-11"
-          >
-            {sharing ? (
-              <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Updating...</>
-            ) : (
-              <><Navigation className="w-5 h-5 mr-2" /> Share My Location</>
-            )}
-          </Button>
-        )}
-
-        {activeTab === 'memories' && (
-          <p className="text-sm text-gray-400 text-center">Tap anywhere on the map to pin a memory 💕</p>
-        )}
-      </div>
-
-      {/* Memory Pins List */}
-      {activeTab === 'memories' && memoryPins.length > 0 && (
-        <div className="px-4 pb-3">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-            {memoryPins.map((pin) => (
-              <button
-                key={pin.id}
-                onClick={() => {
-                  setSelectedPin(pin);
-                  setCurrentLocation([pin.latitude, pin.longitude]);
-                }}
-                className="glass-card rounded-xl p-3 min-w-[140px] flex-shrink-0 text-left hover:shadow-md smooth-transition"
-              >
-                <p className="font-semibold text-gray-800 text-sm truncate">{pin.title}</p>
-                <p className="text-gray-400 text-xs mt-1">{pin.date ? format(new Date(pin.date), 'MMM d, yyyy') : ''}</p>
-              </button>
-            ))}
+    <AppShell
+      header={
+        <div className="px-4 pt-3 pb-2 space-y-3 bg-gradient-to-b from-white to-transparent">
+          <h1 className="text-3xl font-bold gradient-text pt-2">Our Map</h1>
+          <div className="flex gap-2">
+            <Button
+              variant={activeTab === 'memories' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('memories')}
+              className={`flex-1 rounded-xl h-10 ${
+                activeTab === 'memories'
+                  ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white'
+                  : 'border-gray-200'
+              }`}
+              aria-label="Show Memories"
+            >
+              <Heart className="w-4 h-4 mr-2" />
+              Memories
+            </Button>
+            <Button
+              variant={activeTab === 'live' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('live')}
+              className={`flex-1 rounded-xl h-10 ${
+                activeTab === 'live'
+                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                  : 'border-gray-200'
+              }`}
+              aria-label="Show Live Locations"
+            >
+              <Navigation className="w-4 h-4 mr-2" />
+              Live
+            </Button>
           </div>
+          {activeTab === 'live' && (
+            <Button
+              onClick={handleShareLocation}
+              disabled={sharing}
+              className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl h-11"
+              aria-label="Share My Location"
+              loading={sharing}
+            >
+              {sharing ? (
+                <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Updating...</>
+              ) : (
+                <><Navigation className="w-5 h-5 mr-2" /> Share My Location</>
+              )}
+            </Button>
+          )}
+          {activeTab === 'memories' && (
+            <p className="text-sm text-gray-400 text-center">Tap anywhere on the map to pin a memory 💕</p>
+          )}
         </div>
+      }
+    >
+      {/* Memory Pins List */}
+      {activeTab === 'memories' && (
+        memoryPins.length > 0 ? (
+          <div className="px-4 pb-3">
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+              {memoryPins.map((pin) => (
+                <button
+                  key={pin.id}
+                  onClick={() => {
+                    setSelectedPin(pin);
+                    setCurrentLocation([pin.latitude, pin.longitude]);
+                  }}
+                  className="glass-card rounded-xl p-3 min-w-[140px] flex-shrink-0 text-left hover:shadow-md smooth-transition"
+                >
+                  <p className="font-semibold text-gray-800 text-sm truncate">{pin.title}</p>
+                  <p className="text-gray-400 text-xs mt-1">{pin.date ? format(new Date(pin.date), 'MMM d, yyyy') : ''}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="px-4 pb-3 text-gray-400 text-center">No memory pins yet. Tap the map to add one!</div>
+        )
       )}
 
       {/* Live Locations List */}
-      {activeTab === 'live' && activeLocations.length > 0 && (
-        <div className="px-4 pb-3">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-            {activeLocations.map((loc) => (
-              <button
-                key={loc.id}
-                onClick={() => setCurrentLocation([loc.latitude, loc.longitude])}
-                className="glass-card rounded-xl p-3 min-w-[140px] flex-shrink-0 text-left"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <p className="font-semibold text-gray-800 text-sm">{loc.user_name}</p>
-                </div>
-                <p className="text-gray-400 text-xs mt-1">{loc.last_updated ? new Date(loc.last_updated).toLocaleTimeString() : ''}</p>
-              </button>
-            ))}
+      {activeTab === 'live' && (
+        activeLocations.length > 0 ? (
+          <div className="px-4 pb-3">
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+              {activeLocations.map((loc) => (
+                <button
+                  key={loc.id}
+                  onClick={() => setCurrentLocation([loc.latitude, loc.longitude])}
+                  className="glass-card rounded-xl p-3 min-w-[140px] flex-shrink-0 text-left"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <p className="font-semibold text-gray-800 text-sm">{loc.user_name}</p>
+                  </div>
+                  <p className="text-gray-400 text-xs mt-1">{loc.last_updated ? new Date(loc.last_updated).toLocaleTimeString() : ''}</p>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="px-4 pb-3 text-gray-400 text-center">No live locations yet.</div>
+        )
       )}
 
       {/* Map */}
-      <div className="flex-1 relative rounded-t-3xl overflow-hidden mx-2 shadow-lg">
+      <div className="flex-1 relative rounded-t-3xl overflow-hidden mx-2 shadow-lg" style={{ minHeight: 400 }}>
         <MapContainer center={defaultCenter} zoom={13} style={{ height: '100%', width: '100%' }} className="z-0 rounded-t-3xl">
           <TileLayer
             attribution='&copy; OpenStreetMap'
@@ -290,8 +301,9 @@ export default function Map() {
                   <button
                     onClick={() => deletePinMutation.mutate(pin.id)}
                     className="mt-2 text-red-500 text-xs hover:underline"
+                    disabled={deletePinMutation.isPending}
                   >
-                    Remove
+                    {deletePinMutation.isPending ? 'Removing...' : 'Remove'}
                   </button>
                 </div>
               </Popup>
@@ -324,16 +336,16 @@ export default function Map() {
         </MapContainer>
 
         {/* Floating Add Button */}
-        {activeTab === 'memories' && (
-            <button
+        {activeTab === 'memories' && !showAddPin && (
+          <button
             onClick={() => {
               if (currentLocation) {
                 setClickedLocation({ lat: currentLocation[0], lng: currentLocation[1] });
                 setShowAddPin(true);
               }
             }}
-                aria-label="Add memory pin"
-                className="absolute bottom-4 right-4 w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg flex items-center justify-center z-[1000]"
+            aria-label="Add memory pin"
+            className="absolute bottom-4 right-4 w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg flex items-center justify-center z-[1000]"
           >
             <Plus className="w-6 h-6" />
           </button>
@@ -347,6 +359,15 @@ export default function Map() {
             <DialogTitle className="gradient-text text-xl flex items-center gap-2">
               <MapPin className="w-5 h-5" /> Pin a Memory
             </DialogTitle>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-2 right-2"
+              onClick={() => setShowAddPin(false)}
+              aria-label="Close"
+            >
+              <Trash2 className="w-5 h-5" />
+            </Button>
           </DialogHeader>
           <div className="space-y-3 pt-2">
             <Input
@@ -371,13 +392,14 @@ export default function Map() {
               onClick={handleCreatePin}
               disabled={!newPin.title}
               className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl h-11"
-              loading={addPinMutation.isPending}
+              loading={createPinMutation.isPending}
+              aria-label="Save Memory Pin"
             >
               <Heart className="w-5 h-5 mr-2" /> Save Memory
             </Button>
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </AppShell>
   );
 }

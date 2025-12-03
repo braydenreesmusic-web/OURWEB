@@ -11,6 +11,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { User, Heart, Image, Music, Calendar, LogOut, Save, Edit2, Settings } from 'lucide-react';
+import AppShell from '../components/AppShell';
 
 export default function Profile() {
   const queryClient = useQueryClient();
@@ -91,11 +92,9 @@ export default function Profile() {
   };
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 pb-24 space-y-6">
-      <div className="pt-4">
-        <h1 className="text-3xl font-bold gradient-text">Profile</h1>
-      </div>
-
+    <AppShell
+      header={<h1 className="text-3xl font-bold gradient-text">Profile</h1>}
+    >
       {/* User Card */}
       <div className="glass-card rounded-2xl p-5">
         <div className="flex items-center gap-4">
@@ -110,7 +109,13 @@ export default function Profile() {
       </div>
 
       {/* Stats */}
-      {stats && (
+      {stats === undefined ? (
+        <div className="grid grid-cols-4 gap-3">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="glass-card rounded-2xl p-3 text-center animate-pulse bg-gray-100 h-20" />
+          ))}
+        </div>
+      ) : (
         <div className="grid grid-cols-4 gap-3">
           <div className="glass-card rounded-2xl p-3 text-center">
             <Heart className="w-5 h-5 text-pink-500 mx-auto mb-1" />
@@ -148,6 +153,8 @@ export default function Profile() {
               size="icon"
               onClick={() => setEditing(true)}
               className="rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+              aria-label="Edit Relationship Settings"
+              disabled={editing}
             >
               <Edit2 className="w-4 h-4" />
             </Button>
@@ -173,6 +180,7 @@ export default function Profile() {
                   value={formData.partner1_name}
                   onChange={(e) => setFormData({ ...formData, partner1_name: e.target.value })}
                   className="rounded-xl"
+                  required
                 />
               </div>
               <div>
@@ -182,6 +190,7 @@ export default function Profile() {
                   value={formData.partner2_name}
                   onChange={(e) => setFormData({ ...formData, partner2_name: e.target.value })}
                   className="rounded-xl"
+                  required
                 />
               </div>
             </div>
@@ -199,6 +208,8 @@ export default function Profile() {
                 variant="outline"
                 onClick={() => setEditing(false)}
                 className="flex-1 rounded-xl"
+                aria-label="Cancel Edit"
+                disabled={saveMutation.isPending}
               >
                 Cancel
               </Button>
@@ -206,6 +217,8 @@ export default function Profile() {
                 onClick={() => saveMutation.mutate(formData)}
                 className="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl"
                 loading={saveMutation.isPending}
+                disabled={saveMutation.isPending}
+                aria-label="Save Relationship Settings"
               >
                 <Save className="w-4 h-4 mr-2" /> Save
               </Button>
@@ -243,11 +256,13 @@ export default function Profile() {
       <Button
         onClick={handleLogout}
         variant="outline"
-        className="w-full rounded-2xl border-red-200 text-red-500 hover:bg-red-50 h-12"
+        className="w-full rounded-2xl border-red-200 text-red-500 hover:bg-red-50 h-12 focus:outline-none focus:ring-2 focus:ring-red-400"
+        aria-label="Log Out"
+        loading={false /* set to true if logout is async */}
       >
         <LogOut className="w-5 h-5 mr-2" />
         Log Out
       </Button>
-    </div>
+    </AppShell>
   );
 }

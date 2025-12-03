@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
+import AppShell from '../components/AppShell';
 
 export default function Dashboard() {
   const queryClient = useQueryClient();
@@ -76,7 +77,7 @@ export default function Dashboard() {
     };
   }, [user]);
 
-  const { data: relationshipData } = useQuery({
+  const { data: relationshipData, error: relationshipError } = useQuery({
     queryKey: ['relationship'],
     queryFn: async () => {
       try {
@@ -92,7 +93,7 @@ export default function Dashboard() {
     }
   });
 
-  const { data: presenceData } = useQuery({
+  const { data: presenceData, error: presenceError } = useQuery({
     queryKey: ['presence'],
     queryFn: async () => {
       const allPresences = await base44.entities.UserPresence.list('-last_seen');
@@ -110,7 +111,7 @@ export default function Dashboard() {
     refetchInterval: 15000
   });
 
-  const { data: latestNote } = useQuery({
+  const { data: latestNote, error: notesError } = useQuery({
     queryKey: ['latestNote'],
     queryFn: async () => {
       const notes = await base44.entities.Note.list('-created_date', 1);
@@ -118,7 +119,7 @@ export default function Dashboard() {
     }
   });
 
-  const { data: upcomingEvents } = useQuery({
+  const { data: upcomingEvents, error: eventsError } = useQuery({
     queryKey: ['upcomingEvents'],
     queryFn: async () => {
       const events = await base44.entities.Event.list('date', 3);
@@ -169,6 +170,17 @@ export default function Dashboard() {
     }
   });
 
+  if (relationshipError) {
+    return (
+      <AppShell header={<h1 className="text-3xl font-bold gradient-text">Welcome Home</h1>}>
+        <div className="flex flex-col items-center justify-center min-h-[60vh]">
+          <p className="text-red-500 font-semibold mb-2">Failed to load relationship data.</p>
+          <Button onClick={() => window.location.reload()} className="rounded-xl">Retry</Button>
+        </div>
+      </AppShell>
+    );
+  }
+
   if (!relationshipData) {
     return (
       <div className="flex items-center justify-center min-h-screen p-6">
@@ -194,7 +206,14 @@ export default function Dashboard() {
   ) || [];
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 space-y-6 pb-24">
+    <AppShell
+      header={
+        <div className="pt-2 animate-slide-up">
+          <h1 className="text-3xl font-bold gradient-text">Welcome Home</h1>
+          <p className="text-gray-500 mt-1">{user?.full_name} 💕</p>
+        </div>
+      }
+    >
       {showCheckIn && <DailyCheckIn user={user} onClose={() => setShowCheckIn(false)} />}
       {showConstellation && allMemories && (
         <MemoryConstellation memories={allMemories} onClose={() => setShowConstellation(false)} />
@@ -203,12 +222,6 @@ export default function Dashboard() {
         <RelationshipInsights relationshipData={relationshipData} onClose={() => setShowInsights(false)} />
       )}
       {showChat && <EnhancedChat user={user} onClose={() => setShowChat(false)} />}
-
-      {/* Header */}
-      <div className="pt-2 animate-slide-up">
-        <h1 className="text-3xl font-bold gradient-text">Welcome Home</h1>
-        <p className="text-gray-500 mt-1">{user?.full_name} 💕</p>
-      </div>
 
       {/* Active Listening Session Banner */}
       {activeSession && (
@@ -241,7 +254,8 @@ export default function Dashboard() {
       <div className="grid grid-cols-2 gap-4 animate-slide-up">
         <button
           onClick={() => setShowCheckIn(true)}
-          className="glass-card rounded-2xl p-4 text-left hover-lift"
+          className="glass-card rounded-2xl p-4 text-left hover-lift focus:outline-none focus:ring-2 focus:ring-pink-400"
+          aria-label="Open Daily Check-In"
         >
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center mb-3">
             <Heart className="w-5 h-5 text-white" />
@@ -252,7 +266,8 @@ export default function Dashboard() {
         
         <button
           onClick={() => setShowConstellation(true)}
-          className="glass-card rounded-2xl p-4 text-left hover-lift"
+          className="glass-card rounded-2xl p-4 text-left hover-lift focus:outline-none focus:ring-2 focus:ring-purple-400"
+          aria-label="Open Memory Galaxy"
         >
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center mb-3">
             <Sparkles className="w-5 h-5 text-white" />
@@ -263,7 +278,8 @@ export default function Dashboard() {
         
         <button
           onClick={() => setShowInsights(true)}
-          className="glass-card rounded-2xl p-4 text-left hover-lift"
+          className="glass-card rounded-2xl p-4 text-left hover-lift focus:outline-none focus:ring-2 focus:ring-amber-400"
+          aria-label="Open Insights"
         >
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-3">
             <TrendingUp className="w-5 h-5 text-white" />
@@ -274,7 +290,8 @@ export default function Dashboard() {
         
         <button
           onClick={() => setShowChat(true)}
-          className="glass-card rounded-2xl p-4 text-left hover-lift"
+          className="glass-card rounded-2xl p-4 text-left hover-lift focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          aria-label="Open Love Notes"
         >
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-3">
             <MessageCircle className="w-5 h-5 text-white" />
@@ -324,7 +341,11 @@ export default function Dashboard() {
       <DaysCounter startDate={relationshipData.start_date} />
 
       {/* Online Presence - Only Real Users */}
-      {presenceData && presenceData.length > 0 && (
+      {presenceError ? (
+        <div className="text-red-500 text-center py-4">Failed to load presence.</div>
+      ) : !presenceData ? (
+        <div className="animate-pulse h-8 bg-gray-100 rounded-xl my-4" />
+      ) : presenceData.length > 0 && (
         <div className="space-y-3 animate-slide-up">
           <h2 className="text-lg font-bold text-gray-800 px-1">Presence</h2>
           {presenceData.map((presence) => (
@@ -347,7 +368,11 @@ export default function Dashboard() {
       />
 
       {/* Latest Note */}
-      {latestNote && (
+      {notesError ? (
+        <div className="text-red-500 text-center py-4">Failed to load notes.</div>
+      ) : latestNote === undefined ? (
+        <div className="animate-pulse h-24 bg-gray-100 rounded-2xl my-4" />
+      ) : latestNote ? (
         <div className="glass-card rounded-2xl p-5 animate-slide-up">
           <div className="flex items-center gap-2 mb-3">
             <MessageCircle className="w-5 h-5 text-purple-500" />
@@ -364,10 +389,18 @@ export default function Dashboard() {
             View all notes →
           </Link>
         </div>
+      ) : (
+        <div className="glass-card rounded-2xl p-5 text-center text-gray-400 animate-slide-up">
+          No notes yet. Start a conversation!
+        </div>
       )}
 
       {/* Upcoming Events */}
-      {upcomingEvents && upcomingEvents.length > 0 && (
+      {eventsError ? (
+        <div className="text-red-500 text-center py-4">Failed to load events.</div>
+      ) : upcomingEvents === undefined ? (
+        <div className="animate-pulse h-24 bg-gray-100 rounded-2xl my-4" />
+      ) : upcomingEvents && upcomingEvents.length > 0 ? (
         <div className="glass-card rounded-2xl p-5 animate-slide-up">
           <div className="flex items-center gap-2 mb-4">
             <Calendar className="w-5 h-5 text-pink-500" />
@@ -400,7 +433,11 @@ export default function Dashboard() {
             View calendar →
           </Link>
         </div>
+      ) : (
+        <div className="glass-card rounded-2xl p-5 text-center text-gray-400 animate-slide-up">
+          No upcoming events.
+        </div>
       )}
-    </div>
+    </AppShell>
   );
 }
