@@ -325,14 +325,15 @@ export default function Map() {
 
         {/* Floating Add Button */}
         {activeTab === 'memories' && (
-          <button
+            <button
             onClick={() => {
               if (currentLocation) {
                 setClickedLocation({ lat: currentLocation[0], lng: currentLocation[1] });
                 setShowAddPin(true);
               }
             }}
-            className="absolute bottom-4 right-4 w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg flex items-center justify-center z-[1000]"
+                aria-label="Add memory pin"
+                className="absolute bottom-4 right-4 w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg flex items-center justify-center z-[1000]"
           >
             <Plus className="w-6 h-6" />
           </button>
