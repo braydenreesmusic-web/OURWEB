@@ -58,14 +58,14 @@ export default function Profile() {
     queryKey: ['stats'],
     queryFn: async () => {
       const [notes, photos, music, events] = await Promise.all([
-        base44.entities.Note.list(),
-        base44.entities.Photo.list(),
-        base44.entities.Music.list(),
-        base44.entities.Event.list()
+        base44.entities?.Note?.list?.() ?? [],
+        base44.entities?.Photo?.list?.() ?? [],
+        base44.entities?.Music?.list?.() ?? [],
+        base44.entities?.Event?.list?.() ?? []
       ]);
-      return (
-        <div className="container mx-auto max-w-2xl px-4 pb-24 space-y-6">
-          <div className="pt-2">
+      return {
+        notes: notes.length,
+        photos: photos.length,
         music: music.length,
         events: events.length
       };
