@@ -110,12 +110,12 @@ export default function Bookmarks() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 pb-24 space-y-6">
-      <div className="flex items-center justify-between pt-4">
+    <div className="container mx-auto max-w-2xl px-4 pb-24 space-y-6">
+      <div className="flex items-center justify-between pt-2">
         <h1 className="text-3xl font-bold gradient-text">Saved</h1>
         <Button
           onClick={() => setShowAdd(true)}
-          className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-full h-10 px-5"
+          className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-xl h-11 px-5"
         >
           <Plus className="w-4 h-4 mr-2" />
           Add
@@ -178,7 +178,7 @@ export default function Bookmarks() {
                       href={bookmark.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 smooth-transition"
+                      className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 smooth-transition"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
@@ -187,7 +187,7 @@ export default function Bookmarks() {
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteMutation.mutate(bookmark.id)}
-                    className="w-9 h-9 rounded-full text-red-500 hover:bg-red-50"
+                    className="w-11 h-11 rounded-xl text-red-500 hover:bg-red-50"
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>
