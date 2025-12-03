@@ -377,3 +377,6 @@ export default function Map() {
           </div>
         </DialogContent>
       </Dialog>
+    </div>
+  );
+}
