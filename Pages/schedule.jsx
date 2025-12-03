@@ -362,6 +362,7 @@ export default function Schedule() {
                 </Button>
                 <p className="text-center text-gray-400 text-sm">{dateIdeas.filter(i => !i.is_used).length} ideas in jar</p>
               </>
+                  loading={createEventMutation.isPending}
             )}
             <div className="border-t pt-4">
               <p className="text-sm font-medium text-gray-600 mb-2">Add new idea:</p>

@@ -372,10 +372,11 @@ export default function Map() {
               className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl h-11"
             >
               <Heart className="w-5 h-5 mr-2" /> Save Memory
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
-  );
+              <Button
+                onClick={() => addPinMutation.mutate(formData)}
+                className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl"
+                loading={addPinMutation.isPending}
+              >
+                Add Pin
+              </Button>
 }

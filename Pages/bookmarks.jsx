@@ -119,12 +119,12 @@ export default function Bookmarks() {
         >
           <Plus className="w-4 h-4 mr-2" />
           Add
-        </Button>
-      </div>
-
-      {/* Category Filter */}
-      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-        <Button
+              <Button
+                onClick={() => setShowAdd(true)}
+                className="h-11 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white"
+              >
+                <Plus className="w-4 h-4 mr-2" /> Add
+              </Button>
           variant={selectedCategory === 'all' ? 'default' : 'outline'}
           onClick={() => setSelectedCategory('all')}
           className={`rounded-full whitespace-nowrap ${
@@ -134,13 +134,14 @@ export default function Bookmarks() {
           }`}
         >
           All
-        </Button>
-        {categories.map((cat) => {
-          const Icon = cat.icon;
-          return (
-            <Button
-              key={cat.value}
-              variant={selectedCategory === cat.value ? 'default' : 'outline'}
+              <Button
+                onClick={fetchUrlInfo}
+                variant="outline"
+                className="rounded-xl"
+                loading={fetching}
+              >
+                Analyze URL
+              </Button>
               onClick={() => setSelectedCategory(cat.value)}
               className={`rounded-full whitespace-nowrap ${
                 selectedCategory === cat.value 
@@ -150,12 +151,13 @@ export default function Bookmarks() {
             >
               <Icon className="w-4 h-4 mr-2" />
               {cat.label}
-            </Button>
-          );
-        })}
-      </div>
-
-      {/* Bookmarks Grid */}
+              <Button
+                onClick={() => createMutation.mutate(formData)}
+                className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl"
+                loading={createMutation.isPending}
+              >
+                <SaveIcon /> Save
+              </Button>
       <div className="grid grid-cols-1 gap-4">
         {filteredBookmarks.map((bookmark) => {
           const Icon = getCategoryIcon(bookmark.category);

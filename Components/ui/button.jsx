@@ -13,11 +13,18 @@ const variants = {
   ghost: 'bg-transparent text-gray-700 hover:bg-gray-100',
 };
 
-export function Button({ children, className = '', variant = 'default', size = 'default', ...props }) {
+export function Button({ children, className = '', variant = 'default', size = 'default', loading = false, disabled, ...props }) {
   const cls = [base, sizes[size] || sizes.default, variants[variant] || variants.default, className].join(' ').trim();
   return (
-    <button className={`${cls} active:scale-[0.99]`} {...props}>
-      {children}
+    <button className={`${cls} active:scale-[0.99]`} disabled={disabled || loading} aria-busy={loading} {...props}>
+      {loading ? (
+        <span className="inline-flex items-center gap-2">
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+          <span>Loading...</span>
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 }
