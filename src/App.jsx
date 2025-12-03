@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from '../Pages/dashboard'
 import Profile from '../Pages/profile'
 import Bookmarks from '../Pages/bookmarks'
