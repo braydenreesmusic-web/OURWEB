@@ -44,7 +44,9 @@ app.post('/api/llm', async (req, res) => {
 app.post('/api/upload', upload.single('file'), async (req, res) => {
   try {
     const file = req.file;
-    const { 173213128135825, nFLwOht7Jk2QlbDLOMZ76NAP6Ec, dgip2lmxu } = process.env;
+    const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
+    const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
+    const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
     if (!CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET || !CLOUDINARY_CLOUD_NAME) {
       return res.status(500).json({ error: 'Cloudinary not configured on server' });
     }
