@@ -127,7 +127,7 @@ export default function RelationshipInsights({ relationshipData, onClose }) {
   const unreadCount = insights.filter(i => !i.is_read).length;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="glass-card rounded-3xl p-6 max-w-md w-full max-h-[85vh] overflow-y-auto animate-slide-up">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">

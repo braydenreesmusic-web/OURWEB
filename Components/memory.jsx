@@ -42,7 +42,7 @@ export default function MemoryConstellation({ memories, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+    <div className="fixed inset-0 z-[100] bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
       {/* Stars background */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(100)].map((_, i) => (
