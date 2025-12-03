@@ -117,14 +117,12 @@ export default function Bookmarks() {
           onClick={() => setShowAdd(true)}
           className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white rounded-xl h-11 px-5"
         >
-          <Plus className="w-4 h-4 mr-2" />
-          Add
-              <Button
-                onClick={() => setShowAdd(true)}
-                className="h-11 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white"
-              >
-                <Plus className="w-4 h-4 mr-2" /> Add
-              </Button>
+          <Plus className="w-4 h-4 mr-2" /> Add
+        </Button>
+      </div>
+
+      <div className="flex gap-2 overflow-x-auto no-scrollbar">
+        <Button
           variant={selectedCategory === 'all' ? 'default' : 'outline'}
           onClick={() => setSelectedCategory('all')}
           className={`rounded-full whitespace-nowrap ${
@@ -134,30 +132,23 @@ export default function Bookmarks() {
           }`}
         >
           All
-              <Button
-                onClick={fetchUrlInfo}
-                variant="outline"
-                className="rounded-xl"
-                loading={fetching}
-              >
-                Analyze URL
-              </Button>
-              onClick={() => setSelectedCategory(cat.value)}
-              className={`rounded-full whitespace-nowrap ${
-                selectedCategory === cat.value 
-                  ? `bg-gradient-to-r ${cat.color} text-white border-0` 
-                  : 'border-gray-200 text-gray-600 hover:bg-gray-50'
-              }`}
-            >
-              <Icon className="w-4 h-4 mr-2" />
-              {cat.label}
-              <Button
-                onClick={() => createMutation.mutate(formData)}
-                className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl"
-                loading={createMutation.isPending}
-              >
-                <SaveIcon /> Save
-              </Button>
+        </Button>
+        {categories.map(({ value, label, color }) => (
+          <Button
+            key={value}
+            variant={selectedCategory === value ? 'default' : 'outline'}
+            onClick={() => setSelectedCategory(value)}
+            className={`rounded-full whitespace-nowrap ${
+              selectedCategory === value 
+                ? `bg-gradient-to-r ${color} text-white border-0` 
+                : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            {label}
+          </Button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 gap-4">
         {filteredBookmarks.map((bookmark) => {
           const Icon = getCategoryIcon(bookmark.category);
