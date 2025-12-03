@@ -173,9 +173,9 @@ export default function Map() {
     : [40.7128, -74.0060];
 
   return (
-    <div className="h-screen flex flex-col pb-20">
+    <div className="h-screen flex flex-col pb-24">
       {/* Header */}
-      <div className="p-4 space-y-3 bg-gradient-to-b from-white to-transparent">
+      <div className="px-4 pt-3 pb-2 space-y-3 bg-gradient-to-b from-white to-transparent">
         <h1 className="text-3xl font-bold gradient-text pt-2">Our Map</h1>
         
         <div className="flex gap-2">
